@@ -1,345 +1,669 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 :root {
-    --padding-container: 100px 0;
-    --color-title: #001A49;
+    --padding-container: 100px 0; /* Define una variable de padding vertical para el contenedor */
+    --color-title: #001A49; /* Define un color para los títulos */
 }
 
-*{
-    margin: 0;
-    box-sizing: border-box;
-} 
+body {
+    font-family: 'Poppins', sans-serif; /* Establece la fuente global del documento */
+}
 
 .container {
-    width: 90%;
-    max-width: 1300px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: var(--padding-container);
+    width: 90%; /* El contenedor ocupa el 90% del ancho de la página */
+    max-width: 1200px; /* Máximo ancho de 1200px */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    overflow: hidden; /* Oculta el contenido que se desborde */
+    padding: var(--padding-container); /* Usa la variable para el padding vertical */
 }
 
 .hero {
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    max-height: 800px;
-    position: relative;
-    display: grid;
-    grid-template-rows: 100px 1fr;
-    color: #fff;
+    width: 100%; /* El contenedor hero ocupa el 100% del ancho */
+    height: 100vh; /* La altura del hero es igual a la altura de la ventana */
+    min-height: 600px; /* Altura mínima de 600px */
+    max-height: 800px; /* Altura máxima de 800px */
+    position: relative; /* Posiciona el hero de manera relativa */
+    display: grid; /* Aplica el sistema de grid layout */
+    grid-template-rows: 100px 1fr; /* Define dos filas: la primera de 100px, la segunda se expande */
+    color: #fff; /* El texto dentro del hero será blanco */
 }
 
 .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../image/principal/fondo.jpg');
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
-    z-index: -1;
+    content: ""; /* Crea un pseudo-elemento vacío */
+    position: absolute; /* Se posiciona de manera absoluta */
+    top: 0; /* Se alinea en la parte superior */
+    left: 0; /* Se alinea a la izquierda */
+    width: 100%; /* Ocupa el 100% del ancho */
+    height: 100%; /* Ocupa el 100% de la altura */
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
+    /* Aplica un degradado lineal y una imagen de fondo */
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%); /* Aplica un recorte de forma poligonal */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del hero */
 }
 
-@media (max-width: 768px) {
-    .hero {
-        min-height: 300px; /* Ajusta esta altura según tus necesidades */
-        max-height: 350px; /* Ajusta esta altura según tus necesidades */
-    }
+/* Nav */
 
-    .hero::before {
-        background-image: url('../image/principal/fondo.jpg');
-        clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 85%, 0 70%); /* Ajusta este valor si necesitas modificar la forma del clip-path */
-    }
+.nav {
+    --padding-container: 0; /* Anula el padding de la variable del contenedor */
+    height: 100%; /* La altura del nav es el 100% del contenedor padre */
+    display: flex; /* Flexbox para organizar el contenido en el eje horizontal */
+    align-items: center; /* Alinea verticalmente el contenido al centro */
 }
 
-
-/* Navegacion */
-
-nav{
-    width: 100%;
-    height: 140px;
-    background: slategray; 
-
-    /*
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    */
+.nav__title {
+    font-weight: 300; /* Fuente ligera para el título de navegación */
 }
 
-label.logo{
-    font-size: 35px;
-    color: white;
-    margin: 0 100px;
-    line-height: 80px;
-}
-nav ul{
-    float: right;
-    list-style-type: none;
-
-}
-nav ul li{
-    display: inline-block;
-    line-height: 80px;
-}
-nav ul li a{
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    text-transform: capitalize;
-    padding: 5px 10px;
-}
-/* sobreado */
-nav ul li a.active:hover{
-    background: #b8a59e;
+.nav__link {
+    margin-left: auto; /* Empuja los enlaces a la derecha */
+    padding: 0; /* Sin padding */
+    display: grid; /* Usa grid layout */
+    grid-auto-flow: column; /* Los elementos fluyen en columnas */
+    grid-auto-columns: max-content; /* Las columnas se ajustan al contenido */
+    gap: 2em; /* Espacio de 2em entre los enlaces */
 }
 
-button{
-    display: none;
-}
-nav ul ul {
-    display: none;
+.nav__items {
+    list-style: none; /* Sin estilos de lista (sin puntos o números) */
 }
 
-nav ul li:hover > ul {
-    display: block;
+.nav__links {
+    color: #fff; /* El color de los enlaces es blanco */
+    text-decoration: none; /* Sin subrayado en los enlaces */
 }
 
-
-#checkbtn{
-    float: right;
-    line-height: 80px;
-    margin-right: 10px;
-    font-size: 30px;
-    color: white;
-    display: none;
-}
-#check{
-    display: none;
-}
-#check:checked ~ ul{
-    left: 0;
+.nav__menu {
+    margin-left: auto; /* Empuja el menú a la derecha */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el menú */
+    display: none; /* El menú no se muestra por defecto */
 }
 
-@media (max-width: 950px), (max-width: 1280px) {
-    #checkbtn {
-        display: block;
-    }
-    nav ul {
-        width: 100%;
-        height: 100%;
-        background: slategray;
-        position: fixed;
-        top: 130px;
-        left: -100%;
-        transition: 0.5s;
-        z-index: 1;
-    }
-    nav ul li {
-        display: block;
-        text-align: center;
-        line-height: 50px;
-        margin: 15px;
-    }
-    /* 
-    nav ul ul {
-        display: none;
-        position: absolute;
-        top: 0; 
-        left: 0;
-    }
-    */
-    nav ul ul.show {
-        display: block;
-        position: absolute;
-        top: 0; /* Cambia esto */
-        left: 0;
-        /* Otras propiedades que desees aplicar al submenú */
-    }
-    
+.nav__img {
+    display: block; /* Muestra la imagen del nav como bloque */
+    width: 30px; /* Ancho de 30px para la imagen */
 }
 
+.nav__close {
+    display: var(--show, none); /* El botón de cerrar se muestra según la variable --show */
+}
 
 /* Hero container */
 
 .hero__container {
-    max-width: 800px;
-    --padding-container: 0;
-    display: grid;
-    grid-auto-rows: max-content;
-    align-content: center;
-    gap: 1em;
-    padding-bottom: 100px;
-    text-align: center;
+    max-width: 800px; /* Ancho máximo de 800px */
+    --padding-container: 0; /* Anula el padding de la variable de contenedor */
+    display: grid; /* Usa el layout de grid */
+    grid-auto-rows: max-content; /* Cada fila se ajusta al contenido */
+    align-content: center; /* Centra el contenido verticalmente */
+    gap: 1em; /* Espacio entre los elementos */
+    padding-bottom: 100px; /* Padding inferior de 100px */
+    text-align: center; /* Centra el texto */
 }
 
 .hero__title {
-    font-size: 3rem;
+    font-size: 3rem; /* Título con un tamaño de fuente de 3rem */
 }
 
 .hero__paragraph {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Espacio inferior de 20px */
 }
 
 .cta {
-    display: inline-block;
-    background-color: #2091F9;
-    justify-self: center;
-    color: #fff;
-    text-decoration: none;
-    padding: 13px 30px;
-    border-radius: 32px;
+    display: inline-block; /* El botón de llamada a la acción se comporta como un bloque en línea */
+    background-color: #2091F9; /* Fondo azul claro */
+    justify-self: center; /* Centra el botón horizontalmente */
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+    padding: 13px 30px; /* Padding interno de 13px en vertical y 30px en horizontal */
+    border-radius: 32px; /* Bordes redondeados */
 }
 
 /* About */
 
 .about {
-    text-align: center;
+    text-align: center; /* Centra el texto en el contenedor about */
 }
 
 .subtitle {
-    color: var(--color-title);
-    font-size: 2rem;
-    margin-bottom: 25px;
+    color: var(--color-title); /* Aplica el color de título definido en :root */
+    font-size: 2rem; /* Tamaño de fuente de 2rem */
+    margin-bottom: 25px; /* Espacio inferior de 25px */
 }
 
-
 .about__paragraph {
-    line-height: 1.7;
+    line-height: 1.7; /* Ajusta la altura de línea del texto */
 }
 
 .about__main {
-    padding-top: 80px;
-    display: grid;
-    width: 90%;
-    margin: 0 auto;
-    gap: 1em;
-    overflow: hidden;
-    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    padding-top: 80px; /* Padding superior de 80px */
+    display: grid; /* Usa grid layout */
+    width: 90%; /* El ancho es del 90% */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    gap: 1em; /* Espacio entre elementos */
+    overflow: hidden; /* Oculta contenido desbordado */
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto)); /* Distribuye columnas adaptables */
 }
 
-
 .about__icons {
-    display: grid;
-    gap: 1em;
-    justify-items: center;
-    width: 260px;
-    overflow: hidden;
-    margin: 0 auto;
+    display: grid; /* Organiza los íconos en un grid */
+    gap: 1em; /* Espaciado entre los íconos */
+    justify-items: center; /* Centra horizontalmente cada ícono */
+    width: 260px; /* Ancho fijo del contenedor */
+    overflow: hidden; /* Esconde cualquier contenido que exceda el contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
 
 .about__icon {
-    width: 40px;
+    width: 40px; /* Define el tamaño de cada ícono */
 }
 
+/* Knowledge */
 
+.knowledge {
+    background-color: #e5e5f7; /* Fondo claro */
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px); /* Fondo con puntos */
+    background-size: 20px 20px; /* Tamaño del patrón de fondo */
+    background-position: 0 0, 10px 10px; /* Posición de los puntos */
+    overflow: hidden; /* Evita que el contenido sobresalga */
+}
 
+.knowledge__container {
+    display: grid; /* Usamos grid para organizar el contenido */
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 1em; /* Espacio entre columnas */
+    align-items: center; /* Alinea verticalmente el contenido */
+}
 
+.knowledge__picture {
+    max-width: 500px; /* Define el tamaño máximo de la imagen */
+}
 
+.knowledge__paragraph {
+    line-height: 1.7; /* Espaciado entre líneas */
+    margin-bottom: 15px; /* Espacio inferior */
+}
 
+.knowledge__img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+    display: block; /* Asegura que la imagen sea un bloque */
+}
 
+/* price */
 
+.price {
+    text-align: center; /* Centra el contenido de la sección */
+}
 
+.price__table {
+    padding-top: 60px; /* Espaciado superior */
+    display: flex; /* Flexbox para organizar los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si es necesario */
+    gap: 2.5em; /* Espaciado entre elementos */
+    justify-content: space-evenly; /* Espacia equitativamente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
 
+.price__element {
+    background-color: #e5e5f7; /* Fondo claro */
+    text-align: center; /* Centra el texto */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 330px; /* Ancho de los elementos */
+    padding: 40px; /* Espaciado interno */
+    --color-plan: #696871; /* Color personalizado para el nombre del plan */
+    --color-price: #1D293F; /* Color del precio */
+    --bg-cta: #fff; /* Fondo del botón */
+    --color-cta: #5454D4; /* Color del texto del botón */
+    --color-items: #696871; /* Color de los elementos listados */
+}
 
+.price__element--best {
+    width: 370px; /* Ancho mayor para el plan destacado */
+    padding: 60px 40px; /* Más espacio interno */
+    background-color: #FF7143; /* Fondo anaranjado para destacar */
+    --color-plan: rgb(255 255 255 / 75%); /* Color más claro para el texto del plan */
+    --color-price: #fff; /* Texto blanco para el precio */
+    --bg-cta: #9F3919; /* Fondo del botón más oscuro */
+    --color-cta: #FFF; /* Texto blanco para el botón */
+    --color-items: #fff; /* Texto blanco para los elementos listados */
+}
 
+.price__name {
+    color: var(--color-plan); /* Color del nombre del plan, definido en las variables */
+    margin-bottom: 15px; /* Espacio inferior */
+    font-weight: 300; /* Peso ligero para el texto */
+}
 
+.price__price {
+    font-size: 2.5rem; /* Tamaño grande para el precio */
+    color: var(--color-price); /* Color del precio, definido en las variables */
+}
 
+.price__items {
+    margin-top: 35px; /* Espacio superior */
+    display: grid; /* Organización en grid para los elementos */
+    gap: 1em; /* Espaciado entre elementos */
+    font-weight: 300; /* Texto ligero */
+    font-size: 1.2rem; /* Tamaño de fuente moderado */
+    margin-bottom: 50px; /* Espacio inferior */
+    color: var(--color-items); /* Color de los elementos, definido en las variables */
+}
 
+.price__cta {
+    display: block; /* El botón ocupa toda la fila */
+    padding: 20px 0; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado */
+    background-color: var(--bg-cta); /* Fondo del botón, definido en las variables */
+    font-weight: 600; /* Texto en negrita */
+    color: var(--color-cta); /* Color del texto del botón, definido en las variables */
+    box-shadow: 0 0 1px rgba(0, 0, 0, .5); /* Sombra ligera alrededor del botón */
+}
 
+/* Testimony */
 
+.testimony {
+    background-color: #e5e5f7; /* Fondo claro */
+}
 
+.testimony__container {
+    display: grid; /* Usa grid para organizar el contenido */
+    grid-template-columns: 50px 1fr 50px; /* Tres columnas: dos estrechas y una para el contenido principal */
+    gap: 1em; /* Espaciado entre columnas */
+    align-items: center; /* Alinea verticalmente el contenido */
+}
+
+.testimony__body {
+    display: grid; /* Grid para los testimonios */
+    grid-template-columns: 1fr max-content; /* Una columna para el contenido y otra para las imágenes */
+    justify-content: space-between; /* Espacio entre columnas */
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 2em; /* Espaciado entre columnas */
+    grid-column: 2/3; /* Ocupa solo la columna central del contenedor */
+    grid-row: 1/2; /* Ubicado en la primera fila */
+    opacity: 0; /* Oculto por defecto */
+    pointer-events: none; /* Deshabilita interacción hasta que se muestre */
+}
+
+.testimony__body--show {
+    pointer-events: unset; /* Permite la interacción cuando se muestra */
+    opacity: 1; /* Visible cuando se activa */
+    transition: opacity 1.5s ease-in-out; /* Transición suave para el cambio de visibilidad */
+}
+
+.testimony__img {
+    width: 250px; /* Tamaño de las imágenes de los testimonios */
+    height: 250px; /* Mantiene las imágenes cuadradas */
+    border-radius: 50%; /* Imágenes circulares */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+    object-position: 50% 30%; /* Ajusta el foco de la imagen */
+}
+
+.testimony__texts {
+    max-width: 700px; /* Define un ancho máximo para los textos */
+}
+
+.testimony__course {
+    background-color: royalblue; /* Fondo azul para destacar */
+    color: #fff; /* Texto en blanco */
+    display: inline-block; /* Se comporta como un bloque en línea */
+    padding: 5px; /* Espaciado interno */
+}
+
+.testimony__arrow {
+    width: 90%; /* Ajusta el tamaño de las flechas */
+    cursor: pointer; /* Cambia el cursor para indicar interactividad */
+}
+
+/* Questions */
+
+.questions {
+    text-align: center; /* Centra el contenido */
+}
+
+.questions__container {
+    display: grid; /* Usa grid para organizar el contenido */
+    gap: 2em; /* Espaciado entre los elementos */
+    padding-top: 50px; /* Espaciado superior */
+    padding-bottom: 100px; /* Espaciado inferior */
+}
+
+.questions__padding {
+    padding: 0; /* Sin padding inicialmente */
+    transition: padding .3s; /* Transición suave cuando se agrega padding */
+    border: 1px solid #5454D4; /* Borde alrededor del contenedor */
+    border-radius: 6px; /* Bordes redondeados */
+}
+
+.questions__padding--add {
+    padding-bottom: 30px; /* Agrega padding inferior cuando se expande */
+}
+
+.questions__answer {
+    padding: 0 30px 0; /* Padding solo en los lados */
+    overflow: hidden; /* Oculta cualquier contenido desbordado */
+}
+
+.questions__title {
+    text-align: left; /* Alinea el título a la izquierda */
+    display: flex; /* Flexbox para organizar el contenido */
+    font-size: 20px; /* Tamaño de fuente */
+    padding: 30px 0 30px; /* Espaciado superior e inferior */
+    cursor: pointer; /* Cambia el cursor para indicar que es clicable */
+    color: var(--color-title); /* Color del título definido en variables */
+    justify-content: space-between; /* Espacia el contenido a ambos extremos */
+}
+
+.questions__arrow {
+    border-radius: 50%; /* Flecha con bordes redondeados */
+    background-color: var(--color-title); /* Color de fondo definido en las variables */
+    width: 25px; /* Tamaño de la flecha */
+    height: 25px; /* Mantiene las proporciones */
+    display: flex; /* Centra el icono de la flecha */
+    justify-content: center; /* Alinea horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    align-self: flex-end; /* Coloca la flecha en el extremo inferior */
+    margin-left: 10px; /* Margen a la izquierda */
+    transition: transform .3s; /* Transición suave para rotación */
+}
+
+.questions__arrow--rotate {
+    transform: rotate(180deg); /* Rota la flecha cuando está expandida */
+}
+
+.questions__show {
+    text-align: left; /* Alinea el contenido expandido a la izquierda */
+    height: 0; /* Altura inicial de 0 */
+    transition: height .3s; /* Transición suave al expandirse */
+}
+
+.questions__img {
+    display: block; /* La imagen ocupa todo el ancho disponible */
+}
+
+.questions__copy {
+    width: 60%; /* El texto ocupa el 60% del contenedor */
+    margin: 0 auto; /* Centra horizontalmente el contenido */
+    margin-bottom: 30px; /* Margen inferior */
+}
 
 /* Footer */
 
-.footer{
-    background-color: slategray;
+.footer {
+    background-color: #1D293F; /* Fondo oscuro para el pie de página */
 }
 
-.footer__title{
-    font-weight: 300;
-    font-size: 2rem;
-    margin-bottom: 30px;
+.footer__title {
+    font-weight: 300; /* Peso ligero para el texto */
+    font-size: 2rem; /* Tamaño de fuente grande */
+    margin-bottom: 30px; /* Espacio inferior */
 }
 
-.footer__title, .footer__newsletter{
-    color: #fff;
+.footer__title, .footer__newsletter {
+    color: #fff; /* Texto blanco */
 }
 
-
-.footer__container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 60px;
+.footer__container {
+    display: flex; /* Flexbox para organizar los elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    border-bottom: 1px solid #fff; /* Línea blanca en la parte inferior */
+    padding-bottom: 60px; /* Espaciado inferior */
 }
 
-.nav--footer{
-    padding-bottom: 20px;
-    display: grid;
-    gap: 1em;
-    grid-auto-flow: row;
-    height: 100%;
+.nav--footer {
+    padding-bottom: 20px; /* Espacio inferior */
+    display: grid; /* Usa grid para organizar los enlaces */
+    gap: 1em; /* Espaciado entre los enlaces */
+    grid-auto-flow: row; /* Los enlaces fluyen de arriba a abajo */
+    height: 100%; /* Ocupa todo el alto disponible */
 }
 
-.nav__link--footer{
-    display: flex;
-    margin: 0;
-    margin-right: 20px;
-    flex-wrap: wrap;
+.nav__link--footer {
+    display: flex; /* Flexbox para los enlaces */
+    margin: 0; /* Sin margen */
+    margin-right: 20px; /* Margen derecho */
+    flex-wrap: wrap; /* Permite que los enlaces se muevan a la siguiente línea si es necesario */
 }
 
-.footer__inputs{
-    margin-top: 10px;
-    display: flex;
-    overflow: hidden;
+.footer__inputs {
+    margin-top: 10px; /* Espacio superior */
+    display: flex; /* Flexbox para los inputs */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
 }
 
-.footer__input{
-    background-color: #fff;
-    height: 50px;
-    display: block;
-    padding-left: 10px;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-    border: none;
-    margin-right: 16px;
+.footer__input {
+    background-color: #fff; /* Fondo blanco para el input */
+    height: 50px; /* Altura del input */
+    display: block; /* Comportamiento de bloque */
+    padding-left: 10px; /* Espaciado interno a la izquierda */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de la fuente */
+    outline: none; /* Sin borde de enfoque */
+    border: none; /* Sin borde por defecto */
+    margin-right: 16px; /* Margen derecho */
 }
 
-.footer__submit{
-    margin-left: auto;
-    display: inline-block;
-    height: 50px;
-    padding: 0 20px ;
-    background-color: slategray;
-    border: none;
-    font-size: 1rem;
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
+.footer__submit {
+    margin-left: auto; /* Coloca el botón a la derecha */
+    display: inline-block; /* Se comporta como un bloque en línea */
+    height: 50px; /* Altura del botón */
+    padding: 0 20px; /* Espaciado interno */
+    background-color: #2091F9; /* Fondo azul */
+    border: none; /* Sin borde */
+    font-size: 1rem; /* Tamaño de la fuente */
+    color: #fff; /* Texto blanco */
+    border-radius: 6px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor para indicar interactividad */
 }
 
-.footer__copy{
-    --padding-container: 30px 0;
-    text-align: center;
-    color: #fff;
+.footer__copy {
+    --padding-container: 30px 0; /* Padding personalizado */
+    text-align: center; /* Centra el texto */
+    color: #fff; /* Texto blanco */
 }
 
-.footer__copyright{
-    font-weight: 300;
+.footer__copyright {
+    font-weight: 300; /* Peso ligero para el texto */
 }
 
-.footer__icons{
-    margin-bottom: 10px;
+.footer__icons {
+    margin-bottom: 10px; /* Espaciado inferior */
 }
 
-.footer__img{
-    width: 30px;
+.footer__img {
+    width: 30px; /* Tamaño de los iconos */
 }
 
+/* Media queries */
+
+@media (max-width:800px){
+    .nav__menu{
+        display: block;
+    }
+
+    .nav__link--menu{
+        position: fixed;
+        background-color: #000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: .7s opacity;
+    }
+
+    .nav__link--show{
+        --show: block;
+        opacity:1 ;
+        pointer-events: unset;
+    }
+
+    .nav__close{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .hero__title{
+        font-size: 2.5rem;
+    }
+
+
+    .about__main{
+        gap: 2em;
+    }
+
+    .about__icons:last-of-type{
+        grid-column: 1/-1;
+    }
+
+
+    .knowledge__container{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content 1fr;
+        gap: 3em;
+        text-align: center;
+    }
+
+    .knowledge__picture{
+        grid-row: 1/2;
+        justify-self: center;
+    }
+
+    .testimony__container{
+        grid-template-columns: 30px 1fr 30px;
+    }
+
+    .testimony__body{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content max-content;
+        gap: 3em;
+        justify-items:center ;
+    }
+
+
+    .testimony__img{
+        width: 200px;
+        height: 200px;
+        
+    }
+
+    .questions__copy{
+        width: 100%;
+    }
+
+    .footer__container{
+        flex-wrap: wrap;
+    }
+
+    .nav--footer{
+        width: 100%;
+        justify-items: center;
+    }
+
+    .nav__link--footer{
+        width: 100%;
+        justify-content: space-evenly;
+        margin: 0;
+    }
+
+    .footer__form{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .footer__input{
+        flex: 1;
+    }
+
+}
+
+@media (max-width:600px){
+    .hero__title{
+        font-size: 2rem;
+    }
+
+    .hero__paragraph{
+        font-size: 1rem;
+    }
+
+    .subtitle{
+        font-size: 1.8rem;
+    }
+
+    .price__element{
+        width: 90%;
+    }
+
+    .price__element--best{
+        width: 90%;
+        /* padding: 40px; */
+    }
+
+    .price__price{
+        font-size: 2rem;
+    }
+
+    .testimony{
+        --padding-container: 60px 0;
+    }
+
+    .testimony__container{
+        grid-template-columns: 28px 1fr 28px;
+        gap: .9em;
+    }
+
+    .testimony__arrow{
+        width: 100%;
+    }
+
+    .testimony__course{
+        margin-top: 15px;
+    }
+
+    .questions__title{
+        font-size: 1rem;
+    }
+
+    .footer__title{
+        justify-self: start;
+        margin-bottom: 15px;
+    }
+
+    .nav--footer{
+        padding-bottom: 60px;
+    }
+
+    .nav__link--footer{
+        justify-content: space-between;
+    }
+
+    .footer__inputs{
+        flex-wrap: wrap;
+    }
+
+    .footer__input{
+        flex-basis: 100%;
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    .footer__submit{
+        margin-right: auto;
+        margin-left: 0;
+        
+
+        /* 
+        margin:0;
+        width: 100%;
+        */
+    }
+}
 
